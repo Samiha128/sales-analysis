@@ -1,0 +1,13 @@
+Calendar =
+ADDCOLUMNS (
+CALENDAR (DATE(2014,1,1), DATE(2017,12,31)),
+"DayName", FORMAT([Date], "dddd"),
+"DayOfWeek", WEEKDAY([Date],1),
+"Year - Month", IF(MONTH ([Date])<10,YEAR([Date])&"-0"&MONTH([Date]),YEAR([Date])&"-"&MONTH([Date])),
+"Month",DATE(YEAR([Date]), MONTH([Date]), 1),
+"Month Name",FORMAT(([Date]),"MMMM"),
+"Month No",Month([Date]),
+"Year",FORMAT(([Date]),"YYYY"),
+"Week",WEEKNUM([Date]),
+"Year - Week",IF(WEEKNUM([Date])<10,YEAR([Date])&" - W0"&WEEKNUM([Date]),YEAR([Date])&" - W"&WEEKNUM([Date]))
+)
