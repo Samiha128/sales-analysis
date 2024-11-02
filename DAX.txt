@@ -11,3 +11,11 @@ CALENDAR (DATE(2014,1,1), DATE(2017,12,31)),
 "Week",WEEKNUM([Date]),
 "Year - Week",IF(WEEKNUM([Date])<10,YEAR([Date])&" - W0"&WEEKNUM([Date]),YEAR([Date])&" - W"&WEEKNUM([Date]))
 )
+CA Commande = sum(DATA[Ordered Amount])
+CA Facturé = 
+CALCULATE(
+    SUM(DATA[Invoiced Amount]),
+    USERELATIONSHIP(DATA[Invoicing Date], Calendar[Date])
+)
+Quantité Commandé = sum(DATA[Quantity Ordered])
+Quantité Facturé = CALCULATE(SUM(DATA[Invoiced Quantity]), USERELATIONSHIP(DATA[Invoicing Date], Calendar[Date]))
